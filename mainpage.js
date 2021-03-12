@@ -5,10 +5,11 @@ for(var h=0;h<arr.length;h++){
 	var j = i.children[1];
 	if(j.tagName === "TD"){
 		var yearin = j.innerHTML.substr(0,4);
-		Date date = Date.now;
-		var nowyear = date.getFullYear;
-		if(date.getMonth<9) nowyear--;
-		switch(nowyear-yearin){
+		var classname = j.innerHTML.substr(4);
+		var date = new Date(Date.now());
+		var nowyear = date.getFullYear();
+		if(date.getMonth>=9) nowyear++;
+		switch(parseInt(nowyear)-parseInt(yearin)){
 			case 0:
 				yearin = "六年级";
 				break;
@@ -16,11 +17,9 @@ for(var h=0;h<arr.length;h++){
 				yearin = "七年级";
 				break;
 			case 2:
-				j.innerHTML = "八年级";
+				yearin = "八年级";
 				break;
-			default:
-				j.innerHTML
 		}
-		console.log(yearin);
+		j.innerHTML = yearin + classname;
 	}
 }
